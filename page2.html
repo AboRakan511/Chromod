@@ -9,6 +9,7 @@
         background: #f8f8f8;
         text-align: center;
         padding-top: 80px;
+        transition: background-color 0.5s ease; /* حركة نعومة لتغير اللون */
     }
 
     select {
@@ -51,8 +52,8 @@
 <script>
     function showMood() {
         const color = document.getElementById("colorSelect").value;
-        let text = "";
 
+        // نصوص التفسيرات
         const moods = {
             yellow: "اختيارك للأصفر يدل إنك بمرحلة تفاؤل وطاقة إيجابية، ونفسيتك خفيفة وتميل للإنجاز اليوم.",
             blue: "اختيارك للأزرق يعني إنك تبحث عن الهدوء والتوازن اليوم، ونفسيتك تميل للراحة والصفاء أكثر من الحركة.",
@@ -63,7 +64,23 @@
             pink: "اختيارك للوردي يدل إنك اليوم حساس وعاطفي، تميل للحنان والاهتمام بالآخرين، لكن ممكن تأخذ الأمور بجدية زيادة أو تتأثر بسرعة."
         };
 
-        document.getElementById("resultBox").textContent = moods[color] || "اختر لونًا ليظهر تفسير حالتك النفسية.";
+        // ألوان الخلفية
+        const colors = {
+            yellow: "#FFF59D",
+            blue: "#90CAF9",
+            red: "#EF9A9A",
+            gray: "#CFD8DC",
+            green: "#A5D6A7",
+            orange: "#FFCC80",
+            pink: "#F8BBD0"
+        };
+
+        // تغيير النص
+        document.getElementById("resultBox").textContent =
+            moods[color] || "اختر لونًا ليظهر تفسير حالتك النفسية.";
+
+        // تغيير الخلفية
+        document.body.style.backgroundColor = colors[color] || "#f8f8f8";
     }
 </script>
 
