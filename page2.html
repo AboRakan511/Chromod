@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>Chromod - تحليل اللون</title>
+<style>
+    body {
+        font-family: "Tahoma", sans-serif;
+        background: #f8f8f8;
+        text-align: center;
+        padding-top: 80px;
+        transition: background-color 0.5s ease; /* حركة نعومة لتغير اللون */
+    }
+
+    select {
+        padding: 12px;
+        font-size: 18px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+    }
+
+    #resultBox {
+        margin: auto;
+        margin-top: 20px;
+        width: 60%;
+        padding: 25px;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 0 12px rgba(0,0,0,0.1);
+        font-size: 20px;
+        line-height: 1.8;
+    }
+</style>
+</head>
+<body>
+
+<h2>اختر لونك المفضل</h2>
+
+<select id="colorSelect" onchange="showMood()">
+    <option value="">-- اختر لونًا --</option>
+    <option value="yellow">الأصفر</option>
+    <option value="blue">الأزرق</option>
+    <option value="red">الأحمر</option>
+    <option value="gray">الرمادي</option>
+    <option value="green">الأخضر</option>
+    <option value="orange">البرتقالي</option>
+    <option value="pink">الوردي</option>
+</select>
+
+<div id="resultBox">اختر لونًا ليظهر تفسير حالتك النفسية هنا.</div>
+
+<script>
+    function showMood() {
+        const color = document.getElementById("colorSelect").value;
+
+        // نصوص التفسيرات
+        const moods = {
+            yellow: "اختيارك للأصفر يدل إنك بمرحلة تفاؤل وطاقة إيجابية، ونفسيتك خفيفة وتميل للإنجاز اليوم.",
+            blue: "اختيارك للأزرق يعني إنك تبحث عن الهدوء والتوازن اليوم، ونفسيتك تميل للراحة والصفاء أكثر من الحركة.",
+            red: "اختيارك للأحمر يدل إنك بمزاج قوي وواضح، وعندك دافع عالي لإنجاز شيء أو اتخاذ قرار بدون تردد.",
+            gray: "اختيارك للرمادي يدل إنك اليوم حاسس بالتعب أو الملل، ومزاجك منخفض شوي، ممكن تحتاج وقت للراحة أو إعادة ترتيب أفكارك.",
+            green: "اختيارك للأخضر يدل إنك تبحث عن التوازن والراحة النفسية، لكن ممكن تكون حذر زيادة أو متردد بعض الشيء اليوم.",
+            orange: "اختيارك للبرتقالي يدل إنك مليان نشاط وحماس، جاهز تبدأ مهامك، لكن انتبه من التسرع أو المبالغة في الضغط على نفسك.",
+            pink: "اختيارك للوردي يدل إنك اليوم حساس وعاطفي، تميل للحنان والاهتمام بالآخرين، لكن ممكن تأخذ الأمور بجدية زيادة أو تتأثر بسرعة."
+        };
+
+        // ألوان الخلفية
+        const colors = {
+            yellow: "#FFF59D",
+            blue: "#90CAF9",
+            red: "#EF9A9A",
+            gray: "#CFD8DC",
+            green: "#A5D6A7",
+            orange: "#FFCC80",
+            pink: "#F8BBD0"
+        };
+
+        // تغيير النص
+        document.getElementById("resultBox").textContent =
+            moods[color] || "اختر لونًا ليظهر تفسير حالتك النفسية.";
+
+        // تغيير الخلفية
+        document.body.style.backgroundColor = colors[color] || "#f8f8f8";
+    }
+</script>
+
+</body>
+</html>
